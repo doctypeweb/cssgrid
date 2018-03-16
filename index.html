@@ -1,0 +1,91 @@
+<!doctype html>
+<html class="no-js" lang="fa">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="author" content="Amir Rahimi">
+        <title>login</title>
+        <link rel="stylesheet" href="css/main.css">
+        <link rel="stylesheet" href="css/reset.min.css">
+        <script>
+            function onSubmit(token) {
+                document.getElementById('adminfrm').submit();
+            }
+
+            function validate(event) {
+                event.preventDefault();
+                var login = document.getElementById('login').value;
+                var password = document.getElementById('password').value;
+                if (login == "" || password == "") {
+                    alert("please fill the all fields.");
+                } else {
+                    grecaptcha.execute();
+                }
+            }
+
+            function onload() {
+                var element = document.getElementById('btnSubmit');
+                element.onclick = validate;
+            }
+			
+        </script>
+        <script src="https://www.google.com/recaptcha/api.js?hl=fa" async defer></script>
+        <style>a{text-decoration:none;}</style>
+    </head>
+    <body>
+        <!--[if lte IE 9]>
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+        <![endif]-->
+
+        <!-- Add your site or application content here -->
+        <header></header>
+
+        <main>
+            <div class="slider-wrapper" style="background-image: url('https://www.google.com/recaptcha/intro/images/bg-ease-01.jpg');">
+                <div class="content">
+                    <div class="info_content">
+                        <h4 class="heading_b f-yekan" style="direction:rtl;"><?php echo $proverb; ?></h4>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <aside>
+            <form name="adminfrm" id="adminfrm" action="URL/admin/login" method="POST">
+                <div class="login-wrapper">
+                    <a href="#" class="login-logo">
+                        <img src="https://doctypeweb.com/public/images/logo.png" alt="Raya Admin Login">
+                    </a>
+                    <div class="input-group">
+                        <span class="input-group-addon">👤</span>
+                        <input class="form-control" placeholder="نام کاربری" name="login" id="login" type="text" required autofocus tabindex="1">
+                    </div>
+                    <br>
+                    <div class="input-group">
+                        <span class="input-group-addon">🔒</span>
+                        <input class="form-control" placeholder="کلمه عبور" name="password" id="password" type="password" required tabindex="2">
+                    </div>
+                    <div class="actions clearfix" style="text-align:center">
+                        <div id='recaptcha' class="g-recaptcha"
+                             data-sitekey="6Le0_0oUAAAAANjZuh1aJChCBT-ASHRlZd7o1qfr"
+                             data-callback="onSubmit"
+                             data-size="invisible"></div>
+                        <button id='btnSubmit' name="btnSubmit" class="button button-login" tabindex="3">ورود</button>
+                        <button class="button button-back" tabindex="4" onclick="window.location.href = '<?php echo URL; ?>'">بازگشت</button>
+                    </div>
+                    <p style="direction:ltr;margin-top:25px;text-align:center">
+					<span>🌐</span> URL
+					<br />
+					<a target="newtab" href="https://jigsaw.w3.org/css-validator/validator?uri=URL&profile=css3svg&usermedium=all&warning=1&vextwarning=&lang=fa"><img alt="htmlcssvalidate" src="<?php echo URL; ?>views/admin/htmlcssvalidate.png"></a>
+					<br />
+					<a target="newtab" href="https://validator.w3.org/nu/?doc=URL">✅ HTML5 Validate</a>
+					</p>
+                </div>
+            </form>
+        </aside>
+
+        <footer style="align-self:flex-end;direction:rtl;">
+            <p>2018</p>
+        </footer>
+        <script>onload();</script>
+    </body>
+</html>
